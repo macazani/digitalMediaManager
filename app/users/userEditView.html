@@ -1,0 +1,55 @@
+<md-dialog-content >
+
+
+<div layout="row">
+        <h3>{{vm.title}}</h3><span flex></span><md-button class="md-icon-button" ng-click="closeDialog()">
+    <md-icon md-font-library="material-icons">cancel</md-icon>
+    </md-button>
+       </div>
+        <div ng-show="vm.user.timestamp" class="text-left" style="font-size:small">Last Modification: {{vm.user.timestamp}}</div>
+
+<md-divider></md-divider>
+
+    <md-content layout-padding layout="column">
+        <div layout="row" layout-sm="column">
+           <md-input-container>
+            <label>Name</label>
+            <input ng-model="vm.user.name">
+        </md-input-container>
+
+        <md-input-container>
+            <label>E-mail</label>
+            <input type="email" ng-model="vm.user.email">
+        </md-input-container>
+        </div>
+        <div layout="column" layout-sm="column">
+        <md-select placeholder="Company" ng-model="vm.user.company">
+            <md-option ng-repeat="company in vm.companies" value="{{company.name}}">{{company.name}}</md-option>
+        </md-select>
+        <md-select placeholder="Region" ng-model="vm.user.region">
+            <md-option ng-repeat="region in vm.regions" value="{{region.name}}">{{region.name}}</md-option>
+        </md-select>
+        <md-select placeholder="Business Unit" ng-model="vm.user.bu">
+            <md-option ng-repeat="bu in vm.bus" value="{{bu.name}}">{{bu.name}}</md-option>
+        </md-select>
+        </div>
+    </md-content>
+
+        <h3>Platforms</h3>
+        <md-divider></md-divider>
+
+       <md-checkbox ng-repeat="platform in vm.platformsData" ng-model="vm.user.platforms[platform.name].active" aria-label="platform.title">{{platform.title}}</md-checkbox>
+
+        <input type="hidden" ng-repeat="platform in vm.platformsData" name="platform.name + 'Name'" ng-model="vm.user.platforms[platform.name]" ng-init="vm.user.platforms[platform.name].name = vm.user.platforms[platform.name].name || platform.name " />
+        <input ng-if="vm.user.platforms[platform.name].active" type="hidden" ng-repeat="platform in vm.platformsData" name="platform.name + 'Data'" ng-model="vm.user.platforms[platform.name]" ng-init="vm.user.platforms[platform.name].data = vm.user.platforms[platform.name].data || [] " />
+        <input ng-if="!vm.user.platforms[platform.name].active" type="hidden" ng-repeat="platform in vm.platformsData" name="platform.name + 'Data'" ng-model="vm.user.platforms[platform.name]" ng-init="vm.user.platforms[platform.name].data = [] " />
+
+
+        <md-button class="md-raised md-primary" ng-click="vm.submit()">Save</md-button>
+
+
+
+
+
+  </md-dialog-content>
+

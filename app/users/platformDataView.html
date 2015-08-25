@@ -1,0 +1,42 @@
+<md-dialog-content>
+    <div layout="row">
+    <h3>{{vm.title}}</h3>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="closeDialog()">
+    <md-icon md-font-library="material-icons">cancel</md-icon>
+    </md-button>
+    </div>
+    <md-divider></md-divider>
+
+    <table class="platformView table">
+        <thead>
+            <tr>
+                <td ng-repeat="headItem in vm.platformFields[vm.platformView]">{{headItem.fieldValue}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Item in vm.user.platforms[vm.platformView].data">
+                <td ng-repeat="keyItem in vm.platformFields[vm.platformView]">
+                    <md-input-container ng-if="keyItem.fieldType == 'text'">
+
+                        <input ng-model="Item[keyItem.fieldName]" />
+                    </md-input-container>
+                    <md-select ng-if="keyItem.fieldType == 'select'" placeholder="{{keyItem.fieldValue}}" ng-model="Item[keyItem.fieldName]">
+                        <md-option ng-repeat="option in keyItem.fieldOptions" value="{{option}}">{{option}}</md-option>
+                    </md-select>
+                </td>
+
+                <td>
+                <md-button class="md-icon-button" ng-click="vm.removeItem($index)"><md-icon md-font-library="material-icons">delete</md-icon></md-button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <div layout="row">
+<md-button class="md-fab md-mini md-icon-button md-primary" ng-click="vm.addRow()"><md-icon md-font-library="material-icons">add</md-icon><md-tooltip>Add new entry</md-tooltip></md-button>
+
+    <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.savePlatformDetails()">Save</md-button>
+    </div>
+</md-dialog-content>

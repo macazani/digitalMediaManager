@@ -1,0 +1,75 @@
+<md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+        <h3>User List</h3>
+        <span flex></span>
+        <div class="main-fab">
+            <md-button class="md-fab md-primary md-hue-1" ui-sref="userEdit({userId:0})">
+                <md-icon md-font-library="material-icons">add</md-icon>
+                <md-tooltip>Add a new user</md-tooltip>
+            </md-button>
+        </div>
+    </div>
+</md-toolbar>
+<div layout="row">
+    <div flex="90" offset="5">
+        <md-input-container>
+            <label>Search:</label>
+            <input ng-model="search.name" />
+        </md-input-container>
+        <md-whiteframe class="md-whiteframe-z3" layout layout-align="center center">
+            <table st-table="rowCollection" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Company</th>
+                        <th>Region</th>
+                        <th>BU</th>
+                        <th>Platforms</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.platformUsers | filter:search">
+                        <td>{{user.name | uppercase}}</td>
+                        <td><a ng-href="mailto:{{user.email}}">{{user.email}}</a>
+                        </td>
+                        <td>{{user.company}}</td>
+                        <td>{{user.region}}</td>
+                        <td>{{user.bu}}</td>
+                        <td>
+                            <md-button ng-repeat="platform in user.platforms" class="md-fab md-primary md-mini md-icon-button" ng-show="user.platforms[platform.name].active" ui-sref="platformData({userId: {{user.userId}}, platform:'{{platform.name}}'})">
+                                <i class="fa fa-{{vm.platformsData[platform.name].iconName}} fa-lg"></i>
+                                <md-tooltip>
+                                    {{vm.platformsData[platform.name].tooltip}}
+                                </md-tooltip>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-menu>
+                                <md-button class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <md-icon md-menu-origin md-font-library="material-icons">more_vert</md-icon>
+                                </md-button>
+                                <md-menu-content width="2">
+                                    <md-menu-item>
+                                        <md-button ui-sref="userEdit({userId: user.userId})" ng-click="$mdHideMenu()">
+                                            <md-icon md-font-library="material-icons">edit</md-icon>
+                                            Edit
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="$mdHideMenu()">
+                                            <md-icon md-font-library="material-icons">delete</md-icon>
+                                            Delete
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-whiteframe>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><i class="fa fa-facebook-square white"></i> {{vm.title}}</div>
+
+    <div class="panel-body">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Pages</td>
+                        <td>Roles</td>
+                        <td>BM</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="fbItem in vm.user.facebook">
+                        <td><a href="#" editable-text="fbItem.page">{{fbItem.page}}</a></td>
+                        <td><a href="#" editable-text="fbItem.role">{{fbItem.role}}</a></td>
+                        <td><a href="#" editable-text="fbItem.bm">{{fbItem.bm}}</a></td>
+                        <td><a href="#" ng-click="vm.removeItem($index)">remove</a></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default"
+            ui-sref="userList">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Back
+            </a>
+       <!-- <a class="btn btn-primary"
+            ui-sref="facebookEdit({userId: vm.user.userId})">
+                Save
+            </a>-->
+            <button class="btn btn-primary" ng-click="vm.savePlatformDetails()">Save</button>
+    </div>
+</div>

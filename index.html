@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1" />
+    <title>Digital Media</title>
+
+    <!-- Style sheets -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/xeditable.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+
+    <link href="css/app.css" rel="stylesheet" />
+
+    <!-- Library Scripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/angular-mocks.js"></script>
+    <script src="js/ui-router.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/ui-utils.js"></script>
+    <script src="js/toastr.js"></script>
+    <script src="js/xeditable.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/angular-charts.min.js"></script>
+    <script src="js/smart-table.min.js"></script>
+    <!--<script src="js/angular-moment.min.js"></script>-->
+
+    <!-- Angular Material -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+
+    <!-- Application Script -->
+    <script src="app/app.js"></script>
+
+
+    <!-- Services -->
+    <script src="common/services/common.services.js"></script>
+    <script src="common/services/userResource.js"></script>
+    <script src="common/services/userResourceMock.js"></script>
+
+    <!-- User Controllers -->
+
+    <script src="app/users/userListController.js"></script>
+    <script src="app/users/userEditController.js"></script>
+
+    <!-- Platform Controllers -->
+    <script src="app/users/platforms/facebookDetailController.js"></script>
+    <script src="app/users/platformDataController.js"></script>
+
+
+</head>
+
+<body layout="column" ng-app="digitalMediaManagement">
+    <div ng-controller="sideNavController">
+        <md-content>
+            <md-toolbar layout="row">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+                        <md-icon md-font-library="material-icons">menu</md-icon>
+                    </md-button>
+                    <h1>Digital Media Management</h1>
+                </div>
+            </md-toolbar>
+        </md-content>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+            <md-toolbar layout="row" ng-controller="LeftCtrl">
+                <h1 class="md-toolbar-tools">Menu</h1><span flex></span>
+                <md-button ng-click="close()" class="md-icon-button">
+                    <md-icon md-font-library="material-icons">cancel</md-icon>
+                </md-button>
+            </md-toolbar>
+            <md-content layout-padding>
+                <md-content>
+                    <md-list>
+                        <md-list-item class="md-1-line" layout="column" layout-align="start start" ng-controller="LeftCtrl">
+                            <div class="md-list-item-text">
+                                <h3><md-button ui-sref='userList' ng-click="close()"><md-icon md-font-library="material-icons">people</md-icon> User List</md-button></h3>
+                            </div>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-content>
+        </md-sidenav>
+    </div>
+    <md-content flex>
+        <div layout="row" layout-margin>
+            <div flex ui-view></div>
+        </div>
+    </md-content>
+</body>
+
+</html>

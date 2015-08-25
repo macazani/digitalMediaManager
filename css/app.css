@@ -1,0 +1,39 @@
+body{
+
+    background-color: #F2F2F2;
+
+}
+
+
+
+.fa-facebook-square{
+    color: #3B5998;
+
+}
+
+.fa.fa-facebook-square.white{
+    color: #FFFFFF;
+
+}
+
+.fa-h-square{
+    color:#000000;
+}
+
+.fa-h-square .white{
+    color:#FFFFFF;
+}
+
+.table td.middle{vertical-align: middle;}
+
+.platformView.table md-select, .platformView.table md-input-container {padding: 0}
+.userView.table > tbody > tr > td, .platformView.table > tbody > tr > td{border: none; vertical-align:middle;}
+.platformView.table > thead > tr {border-bottom: 1px solid #ddd;}
+.main-fab{
+    position: absolute;
+    z-index: 20;
+    font-size: 30px;
+    top: 35px;
+    right: 20px;
+    transform: scale(.88,.88);
+}
